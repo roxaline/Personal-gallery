@@ -19,7 +19,11 @@ class Image(models.Model):
         Image.objects.filter(id = self.pk).delete() 
     
     def update_image(self, **kwargs):
-        self.objects.filter(id = self.pk).update(**kwargs)       
+        self.objects.filter(id = self.pk).update(**kwargs) 
+    @classmethod
+    def search_by_category(cls, search_input):
+        images = cls.objects.filter(category__name__icontains=search_input)
+        return images              
 
 class Category(models.Model):
     name = models.CharField(max_length=50) 
@@ -59,12 +63,12 @@ class Location(models.Model):
         return images
 
     @classmethod
-    def locations(cls):
+    def image_locations(cls):
         images = cls.objects.order_by('location')
         return images
 
     @classmethod
-    def categories(cls):
+    def image_categories(cls):
         images = cls.objects.order_by('category')
         return images 
 
@@ -73,10 +77,6 @@ class Location(models.Model):
         images = cls.objects.get(id=id)
         return image
 
-    @classmethod
-    def search_by_category(cls, search_input):
-        images = cls.objects.filter(category__name__icontains=search_input)
-        return images        
 
     class Meta:
         ordering = ['name']

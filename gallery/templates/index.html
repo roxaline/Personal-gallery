@@ -25,23 +25,17 @@
             <div class="modal-body">
               <img src="{{image.image.url}}" class="img-responsive" alt="Image">
               <br>
-              <strong>Location: {{image.location}}</strong>
-              <br>
-              <strong>Category: {{image.category}}</strong>
-              <br>
               <strong>Description: {{image.description}}</strong>
             </div>
             <div class="modal-footer">
               <input class="form-control input-lg" type="text"  value="{{image.image.url}}" id="{{image.id}}-url" >
-              
             </div>
           </div>
         </div>
       </div>
-
     </div>
     {% empty %}
-        <h3 class="text-center">Nothing to diplay!</h3>
+      <h3 class="text-center">Nothing to diplay!</h3>
     {% endfor %}
   </div>
 </div>
