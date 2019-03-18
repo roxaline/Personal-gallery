@@ -22,7 +22,7 @@ class Image(models.Model):
         self.objects.filter(id = self.pk).update(**kwargs)       
 
 class Category(models.Model):
-    name = models.CharField(max_length=15) 
+    name = models.CharField(max_length=50) 
 
     def __str__(self):
         return self.name
@@ -38,7 +38,7 @@ class Category(models.Model):
 
 
 class Location(models.Model):
-    name = models.CharField(max_length=20) 
+    name = models.CharField(max_length=50) 
 
     def __str__(self):
         return self.name
@@ -54,17 +54,17 @@ class Location(models.Model):
 
 
     @classmethod
-    def all_images(cls):
+    def images(cls):
         images = cls.objects.all()
         return images
 
     @classmethod
-    def image_locations(cls):
+    def locations(cls):
         images = cls.objects.order_by('location')
         return images
 
     @classmethod
-    def image_categories(cls):
+    def categories(cls):
         images = cls.objects.order_by('category')
         return images 
 
@@ -80,3 +80,5 @@ class Location(models.Model):
 
     class Meta:
         ordering = ['name']
+
+        
