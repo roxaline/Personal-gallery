@@ -1,13 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'css/basenews.css' %}">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Welcome to Personal Gallery</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+{{block.super}}
+<div class="container" style="background-image:url('https://images.unsplash.com/photo-1484932586802-fee50c6a3172?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=632&q=80');background-size:  cover">
+    <div>
+        <h1 style="color:white;opacity: 8" class="text-center">Roselyne's Gallery</h1>
+    </div>
+    <hr>
+  <div class="row">
+    {% for image in images %}
+    <div class="col-md-4"  style="color:white">
+      {{image.name}}
+        <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{image.image.url}}" class="img-thumbnail" alt="image" data-toggle="modal" data-target="#{{image.id}}">
+
+      <!-- Image Details modal -->
+
+      <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="imageTitle" aria-hidden="true">
+        <div  style="max-width:100%; max-height:100%; padding-top:100px;" class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h5 class="modal-title" id="imageTitle">{{image.name}}</h5>
+              </button>
+            </div>
+            <div class="modal-body">
+              <img src="{{image.image.url}}" class="img-responsive" alt="Image">
+              <br>
+              <strong>Location: {{image.location}}</strong>
+              <br>
+              <strong>Category: {{image.category}}</strong>
+              <br>
+              <strong>Description: {{image.description}}</strong>
+            </div>
+            <div class="modal-footer">
+              <input class="form-control input-lg" type="text"  value="{{image.image.url}}" id="{{image.id}}-url" >
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    {% empty %}
+        <h3 class="text-center">Nothing to diplay!</h3>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
