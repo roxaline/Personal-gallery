@@ -11,9 +11,6 @@
     <div class="col-md-4"  style="color:white">
       {{image.name}}
         <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{image.image.url}}" class="img-thumbnail" alt="image" data-toggle="modal" data-target="#{{image.id}}">
-
-      <!-- Image Details modal -->
-
       <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="imageTitle" aria-hidden="true">
         <div  style="max-width:100%; max-height:100%; padding-top:100px;" class="modal-dialog" role="document">
           <div class="modal-content">
@@ -29,13 +26,14 @@
             </div>
             <div class="modal-footer">
               <input class="form-control input-lg" type="text"  value="{{image.image.url}}" id="{{image.id}}-url" >
+              <button class="btn btn-outline-info" onclick="copyUrl('{{image.id}}-url')">Copy Image Url</button>
             </div>
           </div>
         </div>
       </div>
     </div>
     {% empty %}
-      <h3 class="text-center">Nothing to diplay!</h3>
+      <h3 class="text-center" style="color:white">Nothing to diplay!</h3>
     {% endfor %}
   </div>
 </div>
