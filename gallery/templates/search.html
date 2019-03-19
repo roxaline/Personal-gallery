@@ -1,20 +1,56 @@
-{% extends 'base.html' %}
+{%extends 'base.html'%} 
 {% block content %}
+<div class="container" style="background-image:url('http://content.chupamobile.com/user-upload2/product-image-screenshot/0W6aAgBK8mIOIsaW1iX23hs2_1_SnowLand-Background-p.jpg');background-size: cover">
 
-<div class="row">
-    {% for image in images %} {% if images %}
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 columns">
-        <div class="scale">
-            <div class="opacity">
-                <div class="view">
-                    <a href="" class="btn-view">View image</a>
-                </div>
+  <div class="row">
+    {% if images%}
+      <h2 class="text-center" style="color:white"> {{ images|length }} images of searched category: <strong><em style="color:red">"{{message}}"</em></strong></h2>
+    {% else %}
+      <h2 class="text-center" style="color:white"> No image found <strong><em>"{{message}}" category</em></strong></h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if images %}
+    {% for image in images %}
+    <div class="col-md-4">
+        <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{image.image.url}}" class="img-thumbnail" alt="Image" data-toggle="modal" data-target="#{{image.id}}">
+
+      <!-- Image Details modal -->
+
+      <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="imageTitle" aria-hidden="true">
+        <div  style="max-width:100%; max-height:100%; padding-top:100px;" class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h5 class="modal-title" id="imageTitle">{{image.image_name}}</h5>
+              </button>
             </div>
-            <img src="{{image.image.url}}" alt="Image" class="img-fluid">
+            <div class="modal-body">
+              <img src="{{image.image.url}}" style="width:570px; height:500px;" alt="Image">
+              <br>
+              {{image.image_description}}
+            </div>
+            <div class="modal-footer">
+              <input class="form-control input-lg" type="text" value="{{image.image.url}}" id="{{image.id}}-url">
+              <button class="btn btn-outline-info" onclick="copyUrl('{{image.id}}-url')">Copy Image Url</button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    {% endif %} {% endfor %}
+    <script type="text/javascript">
+      function copyUrl(element) {
+        var myVar = document.getElementById(element);
+        myVar.select();
+        document.execCommand('copy');
+        alert("Copied the link of image: " + myVar.value);  
+      }
+    </script>
+    {% endfor %}
+    {% endif %}
+  </div>
 </div>
-
 {% endblock %}
-
