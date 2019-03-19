@@ -9,7 +9,7 @@ By UWABIKIRAMARIYA Roselyne
 ## Description
 A personal gallery application that one displays their photos for others to see who can copy the photos links and share them.
 
-## Behavior Driven Development
+## BDD
 
 * The program should display various photos:
 
@@ -75,8 +75,11 @@ in your browser to see and follow your work on the project:
 * HTML/CSS
 * Bootstrap
 
+## Contacts
+
+E-mail: mariadelarosita078@gmail.com
+
+Phone Number: (+250)786421009
+
 ## License
-
-MIT License
-
-Copyright (c) 2019 UWABIKIRAMARIYA Roselyne
+MIT Copyright (c) 2019
