@@ -1,6 +1,4 @@
-# Personal Gallery      
-
-17th March 2019 
+# Personal Gallery, 17th March 2019 
 
 A personal gallery application that one displays their photos for others to see.
 
@@ -68,7 +66,7 @@ in your browser to see and follow your work on the project:
 
 -A text Editor
 
-## Link to Live Website
+<!-- ## Website link -->
 
 ## Technologies Used
 * Django
