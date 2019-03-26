@@ -75,7 +75,7 @@ in your browser to see and follow your work on the project:
 
 ## link to visit
 
-*'https://myroxy.herokuapp.com/'*
+*'https://roxaline.herokuapp.com/'*
 
 ## Contacts
 
